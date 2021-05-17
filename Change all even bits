@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Returns modified number with
+// all even bits 0.
+int changeEvenBits(int n)
+{
+    // To store sum of bits
+    // at even positions.
+    int to_subtract = 0;
+ 
+    // To store bits to shift
+    int m = 0;
+ 
+    // One by one put all even
+    // bits to end
+    for (int x = n; x; x >>= 2) {
+        // If current last bit
+        // is set, add it to ans
+        if (x & 1)
+            to_subtract += (1 << m);
+ 
+        // Next shift position
+        m += 2;
+    }
+ 
+    return n - to_subtract;
+}
+ 
+// Driver code
+int main()
+{
+    int n = 30;
+    cout << changeEvenBits(n) << endl;
+ 
+    return 0;
+}
